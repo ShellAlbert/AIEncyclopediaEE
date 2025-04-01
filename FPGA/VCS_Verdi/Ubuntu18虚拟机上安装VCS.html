@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="zh-cn" style="--olcb-folder-code-block-max-height: 80vh; --cnb-code-bg: rgb(243, 243, 243); --cnb-code-font-size: 16px; --cnb-code-color: rgb(68, 68, 68);"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta name="keywords" content="Linux,软件安装">
+    <meta name="description" content="没想到Questa Sim被我用崩了，出了问题还找不到问题在哪。一气之下转战VCS。远离需要写代码的工作，会变得不幸。 首先感谢这篇博文《VCS2018在Ubuntu20 18安装步骤》的博主，安装方法几乎都来自于此。使用到的软件主要为Ubuntu-18.04.6-desktop-amd64， 一、">
+    <meta property="og:description" content="没想到Questa Sim被我用崩了，出了问题还找不到问题在哪。一气之下转战VCS。远离需要写代码的工作，会变得不幸。 首先感谢这篇博文《VCS2018在Ubuntu20 18安装步骤》的博主，安装方法几乎都来自于此。使用到的软件主要为Ubuntu-18.04.6-desktop-amd64， 一、">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>记一次在Ubuntu18虚拟机上安装VCS等 - TooyamaYuuouji - 博客园</title>
+    <link rel="icon" id="favicon" href="https://assets.cnblogs.com/favicon_v3_2.ico" type="image/x-icon">
+    <link rel="canonical" href="https://www.cnblogs.com/Lexington-CV2/articles/16703093.html">
+    
+    <style>#home :not(.cnblogs_code):not(.cnblogs_Highlighter)>pre:not([highlighted]):not([class*="brush:"]) code:not(.hljs), :not(.cnblogs_code):not(.cnblogs_Highlighter)>pre:not([highlighted]):not([class*="brush:"]) code:not(.hljs) {background: rgb(243, 243, 243);
+        padding: 16px;
+        border: 0px rgb(68, 68, 68);
+        border-radius: 0px;
+        border-color: transparent;
+        color: rgb(68, 68, 68);
+        font-family: monospace;
+        font-size: 16px</style><link rel="stylesheet" href="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/blog-common.min.css">
+    
+
+    <link id="MainCss" rel="stylesheet" href="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/bundle-blacksun.min.css">
+        <link id="highlighter-theme-default" type="text/css" rel="stylesheet" href="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/default.css">
+    
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/bundle-blacksun-mobile.min.css">
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/Lexington-CV2/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/Lexington-CV2/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/Lexington-CV2/wlwmanifest.xml">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://www.cnblogs.com/Lexington-CV2/articles/16703093.html",
+      "headline": "记一次在Ubuntu18虚拟机上安装VCS等",
+      "description": "没想到Questa Sim被我用崩了，出了问题还找不到问题在哪。一气之下转战VCS。远离需要写代码的工作，会变得不幸。 首先感谢这篇博文《VCS2018在Ubuntu20 18安装步骤》的博主，安装方法几乎都来自于此。使用到的软件主要为Ubuntu-18.04.6-desktop-amd64， 一、",
+      "image": [
+        
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://www.cnblogs.com/Lexington-CV2/",
+        "name": "TooyamaYuuouji",
+        "url": "https://www.cnblogs.com/Lexington-CV2/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://www.cnblogs.com/",
+        "name": "博客园",
+        "url": "https://www.cnblogs.com/"
+      },
+      "datePublished": "2022-09-17T22:40:00.0000000&#x2B;08:00",
+      "dateModified": "2023-02-13T20:56:00.0000000&#x2B;08:00",
+      "wordCount": "11223",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://www.cnblogs.com/Lexington-CV2/",
+        "name": "TooyamaYuuouji",
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://www.cnblogs.com/",
+          "name": "博客园"
+        }
+      }
+    }
+    </script>
+
+    <script>
+        var currentBlogId = 716723;
+        var currentBlogApp = 'Lexington-CV2';
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'BlackSun';
+        var visitorUserId = '';
+        var hasCustomScript = false;
+        window.cb_enable_mathjax = true;
+        window.mathEngine = 0;
+        window.codeHighlightEngine = 1;
+        window.enableCodeLineNumber = true;
+        window.codeHighlightTheme = 'default';
+        window.darkModeCodeHighlightTheme = 'vs2015';
+        window.isDarkCodeHighlightTheme = false;
+        window.isDarkModeCodeHighlightThemeDark = true;
+        window.isDisableCodeHighlighter = false;
+        window.enableCodeThemeTypeFollowSystem = false;
+        window.enableMacStyleCodeBlock = false;
+    </script>
+        <script>
+            window.currentPostId = 16703093;
+            window.currentPostDateAdded = '2022-09-17 22:40';
+        </script>
+    <script src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/jquery-3.3.1.min.js"></script>
+    <script src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/blog-common.min.js"></script><style>.medium-zoom-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 300ms;
+  will-change: opacity;
+}
+
+.medium-zoom--opened .medium-zoom-overlay {
+  cursor: pointer;
+  cursor: zoom-out;
+  opacity: 1;
+}
+
+.medium-zoom-image {
+  cursor: pointer;
+  cursor: zoom-in;
+  /*
+    The `transition` is marked as "!important" for the animation to happen
+    even though it's overriden by another inline `transition` style attribute.
+
+    This is problematic with frameworks that generate inline styles on their
+    images (e.g. Gatsby).
+
+    See https://github.com/francoischalifour/medium-zoom/issues/110
+   */
+  transition: transform 300ms cubic-bezier(0.2, 0, 0.2, 1) !important;
+}
+
+.medium-zoom-image--hidden {
+  visibility: hidden;
+}
+
+.medium-zoom-image--opened {
+  position: relative;
+  cursor: pointer;
+  cursor: zoom-out;
+  will-change: transform;
+}
+</style><script id="hljs-script" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/highlight.min.js" type="text/javascript" async=""></script>
+    
+<script id="mathjax" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/MathJax.js" type="text/javascript" async=""></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><script id="hljs-line-numbers" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/highlightjs-line-numbers.min.js" type="text/javascript" async=""></script><meta property="og:image" content="https://img2022.cnblogs.com/blog/1850196/202209/1850196-20220917151003551-463217184.png"><style type="text/css">.hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body class="skin-blacksun has-navbar mathjax2 hljs-engine"><div id="MathJax_Message" style="display: none;"></div>
+    <a name="top"></a>
+        <div id="imagebar" class="imagebar-mobile imagebar-text-mobile formobile">
+                <a href="https://www.doubao.com/?channel=cnblogs&amp;source=hw_db_cnblogs&amp;type=lunt&amp;theme=bianc" onclick="countCreativeClicks('M2-字节-豆包')" rel="nofollow">
+                    <img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/35695-20241201073014811-1847930772.jpg" alt="" onload="countCreativeImpressionsOnMobile('M2-字节-豆包')">
+                    <span id="m2_impression" style="display:none"></span>
+                </a>
+        </div>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding">                    
+                    <a href="https://www.cnblogs.com/" title="开发者的网上家园" role="banner">
+                        <img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/logo.svg" alt="博客园logo">
+                    </a>
+                </li>
+                    <li><a href="https://cnblogs.vip/">会员</a></li>
+                    <li><a href="https://cnblogs.vip/store">商店</a></li>
+                        <li><a href="https://www.cnblogs.com/cmt/p/18500368">众包</a></li>
+                <li>
+                    <a href="https://news.cnblogs.com/" onclick="countClicks('nav', 'skin-navbar-news')">新闻</a>
+                </li>
+                <li>
+                    <a href="https://q.cnblogs.com/" onclick="countClicks('nav', 'skin-navbar-q')">博问</a>
+                </li>
+                <li>
+                    <a href="https://ing.cnblogs.com/" onclick="countClicks('nav', 'skin-navbar-ing')">闪存</a>
+                </li>
+                <li><a href="https://www.cnblogs.com/cmt/p/18341478">赞助商</a></li>
+                <li><a href="https://chat2db-ai.com/" target="_blank" onclick="countClicks('nav', 'skin-navbar-chat2db')">Chat2DB</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search dropdown" action="https://zzk.cnblogs.com/s" method="get" role="search">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="search" tabindex="3" autocomplete="off">
+                        <button id="zzk_search_button" onclick="window.navbarSearchManager.triggerActiveOption()">
+                            <img id="search_icon" class="focus-hidden" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/search.svg" alt="搜索">
+                            <img class="hidden focus-visible" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/enter.svg" alt="搜索">
+                        </button>
+                        <ul id="navbar_search_options" class="dropdown-menu quick-search-menu">
+                            <li tabindex="0" class="active" onclick="zzkSearch(event, document.getElementById('zzk_search_input').value)">
+                                <div class="keyword-wrapper">
+                                    <img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/search.svg" alt="搜索">
+                                    <div class="keyword"></div>
+                                </div>
+                                <span class="search-area">所有博客</span>
+                            </li>
+                                    <li tabindex="1" onclick="zzkBlogSearch(event, 'Lexington-CV2', document.getElementById('zzk_search_input').value)">
+                                        <div class="keyword-wrapper">
+                                            <img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/search.svg" alt="搜索">
+                                            <div class="keyword"></div>
+                                        </div>
+                                        <span class="search-area">当前博客</span>
+                                    </li>
+                        </ul>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔" style="display: none;">
+                        <img id="new_post_icon" class="navbar-icon" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/newpost.svg" alt="写随笔">
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客" style="display: none;">
+                        <img id="myblog_icon" class="navbar-icon" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/myblog.svg" alt="我的博客">
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息" style="display: none;">
+                        <img id="msg_icon" class="navbar-icon" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/message.svg" alt="短消息">
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <a id="navbar_lite_mode_indicator" data-current-page="blog" style="display: none" href="javascript:void(0)" alt="简洁模式" title="简洁模式启用，您在访问他人博客时会使用简洁款皮肤展示">
+                        <img class="navbar-icon" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/lite-mode-on.svg" alt="简洁模式">
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown" style="display: none;">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/avatar-default.svg" alt="用户头像">
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="https://vip.cnblogs.com/my">会员中心</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup" style="display: inline;">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()" style="display: inline;">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+
+    <div id="top">
+	<div>
+    <table class="HeaderTitles">
+        <tbody><tr>
+            <td>
+                <h1 class="HeaderTitle"><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/Lexington-CV2">TooyamaYuuouji</a>
+</h1>
+                <p id="tagline"></p>
+            </td>
+        </tr>
+    </tbody></table>
+</div>
+<div>
+    <table id="HeaderBar" class="HeaderBar">
+        <tbody><tr>
+            <td class="HeaderBarTab" nowrap="nowrap">
+                
+&nbsp;
+<a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+&nbsp;::
+
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/Lexington-CV2/">
+首页</a>
+&nbsp;::
+
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+&nbsp;::
+
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/TooyamaYuuouji">
+联系</a>&nbsp;::
+
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/Lexington-CV2/rss/">
+订阅</a>
+
+<a id="blog_nav_rss_image" href="https://www.cnblogs.com/Lexington-CV2/rss/">
+    <img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/xml.gif" alt="订阅">
+</a>&nbsp;::
+
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+
+
+
+            </td>
+			
+            <td class="HeaderBarTabBack" nowrap="nowrap" width="100%">
+                <table class="BlogStatsBar">
+    <tbody><tr>
+        <td width="100%">
+        </td>
+        <td class="BlogStatsBar" nowrap="nowrap">
+            &nbsp;
+            2 随笔 ::
+            11 文章 ::
+            7 评论 ::
+            
+<span title="总阅读数: 20996">
+20996</span> 阅读
+        </td>
+    </tr>
+</tbody></table>
+
+
+            </td>
+        </tr>
+    </tbody></table>
+</div>
+</div>
+<table id="maintable">
+	<tbody><tr><td id="leftmenu">
+	
+		<div id="sidebar_news" class="newsItem">
+    <h3>公告</h3>
+<div class="News">
+	<div id="blog-news">    
+    <div id="sidebar_news_content">
+<div id="profile_block">
+    昵称：
+    <a href="https://home.cnblogs.com/u/Lexington-CV2/">
+        TooyamaYuuouji
+    </a>
+    <br>
+    园龄：
+    <a href="https://home.cnblogs.com/u/Lexington-CV2/" title="入园时间：2019-10-28">
+        5年5个月
+    </a>
+    <br>
+    粉丝：
+    <a class="follower-count" href="https://home.cnblogs.com/u/Lexington-CV2/followers/">
+        13
+    </a>
+    <br>
+    关注：
+    <a class="folowing-count" href="https://home.cnblogs.com/u/Lexington-CV2/followees/">
+        0
+    </a>
+    <div id="p_b_follow" class="follow-tip">
+<a href="javascript:void(0)" onclick="follow('dcf364fd-cb02-43d3-9bc3-08d753a9a8fd')">+加关注</a></div>
+    <script>getFollowStatus('dcf364fd-cb02-43d3-9bc3-08d753a9a8fd');</script>
+</div>
+</div>
+</div>
+<script>loadBlogNews();</script>
+</div>
+
+ 
+</div>
+<div id="sidebar_c3"></div>
+		<div id="blog-sidecolumn"><!-- 搜索 -->
+<div id="sidebar_search" class="sidebar-block">
+    <div class="mySearch my-search">
+        <h3 class="catListTitle">搜索</h3>
+        <div id="sidebar_search_box">
+            <div id="widget_my_zzk" class="div_my_zzk">
+                <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<!-- 常用链接 -->
+<div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">
+常用链接
+</h3>
+<ul>
+    <li><a href="https://www.cnblogs.com/Lexington-CV2/p/" title="我的博客的随笔列表">我的随笔</a></li>
+<li><a href="https://www.cnblogs.com/Lexington-CV2/MyComments.html" title="我的发表过的评论列表">我的评论</a></li>
+<li><a href="https://www.cnblogs.com/Lexington-CV2/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li>
+<li><a href="https://www.cnblogs.com/Lexington-CV2/comments" title="我的博客的评论列表">最新评论</a></li>
+<li><a href="https://www.cnblogs.com/Lexington-CV2/tag/" title="我的博客的标签列表">我的标签</a></li>
+
+</ul>
+</div>
+
+<!-- 最新随笔 -->
+
+
+<!-- 我的标签 -->
+<div id="sidebar_toptags" class="sidebar-block"><h3><a href="https://www.cnblogs.com/Lexington-CV2/tag/" class="sidebar-card-title-a">我的标签</a></h3>
+<div id="MyTag">
+    <ul>
+                <li>
+            <a href="https://www.cnblogs.com/Lexington-CV2/tag/UVM/">UVM<span class="tag-count">(7)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Lexington-CV2/tag/MATLAB/">MATLAB<span class="tag-count">(4)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Lexington-CV2/tag/Linux/">Linux<span class="tag-count">(4)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Lexington-CV2/tag/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">数字信号处理<span class="tag-count">(3)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Lexington-CV2/tag/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装<span class="tag-count">(2)</span></a>
+        </li>
+    
+
+    </ul>
+</div>
+</div>
+
+<!-- 积分与排名 -->
+
+
+<!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+<div id="sidebar_categories">
+
+<div class="mainMenuBackground">
+        <h3>
+            
+    <a class="sidebar-card-title-a" href="https://www.cnblogs.com/Lexington-CV2/post-categories">随笔分类</a>
+
+
+
+        </h3>
+        <ul>
+                <li class="menuItemList" data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/Lexington-CV2/category/2204866.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">我的Career(1)</a>
+
+                    <span style="width:10px">
+                        
+                    </span>
+                </li>                
+            
+        </ul>
+        <h3>
+            
+随笔档案
+
+
+        </h3>
+        <ul>
+                <li class="menuItemList" data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/Lexington-CV2/p/archive/2022/09" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2022年9月(1)</a>
+
+                    <span style="width:10px">
+                        
+                    </span>
+                </li>                
+                <li class="menuItemList" data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/Lexington-CV2/p/archive/2022/02" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">2022年2月(1)</a>
+
+                    <span style="width:10px">
+                        
+                    </span>
+                </li>                
+            
+        </ul>
+        <h3>
+            
+    <a class="sidebar-card-title-a" href="https://www.cnblogs.com/Lexington-CV2/article-categories">文章分类</a>
+
+
+
+        </h3>
+        <ul>
+                <li class="menuItemList" data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/Lexington-CV2/category/2111386.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">Matlab(3)</a>
+
+                    <span style="width:10px">
+                        
+                    </span>
+                </li>                
+                <li class="menuItemList" data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/Lexington-CV2/category/2196839.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">UVM(6)</a>
+
+                    <span style="width:10px">
+                        
+                    </span>
+                </li>                
+                <li class="menuItemList" data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/Lexington-CV2/category/2196837.html" style="--cnb-category-item-link-indent-size: calc(0 * 1em)" class="category-item-link" rel="" target="">软件安装(2)</a>
+
+                    <span style="width:10px">
+                        
+                    </span>
+                </li>                
+            
+        </ul>
+</div></div>
+
+<!-- 最新评论 -->
+<!-- 阅读排行榜 -->
+<div id="sidebar_topviewedposts" class="sidebar-block">
+<div id="topview_posts_wrap">
+    <h3 class="catListTitle">
+        <a href="https://www.cnblogs.com/Lexington-CV2/most-viewed" class="sidebar-card-title-a">
+    阅读排行榜
+</a>
+
+    </h3>
+    <div id="TopViewPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/Lexington-CV2/p/16597128.html">
+                            1. 记我的第一个UVM项目(887)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/Lexington-CV2/p/15920439.html">
+                            2. 告一段落的稀疏傅里叶变换变换(140)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div></div>
+
+<!-- 评论排行榜 -->
+<div id="sidebar_topcommentedposts" class="sidebar-block"></div>
+
+<!-- 推荐排行榜 -->
+<div id="sidebar_topdiggedposts" class="sidebar-block"></div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap" class="RecentComment">
+    <h3 class="catListTitle"><a href="https://www.cnblogs.com/Lexington-CV2/comments" class="sidebar-card-title-a">最新评论</a></h3>    
+    <div class="RecentCommentBlock">
+        <ul>
+                <li class="recent_comment_title"><a href="https://www.cnblogs.com/Lexington-CV2/articles/16703093.html">1. Re:记一次在Ubuntu18虚拟机上安装VCS等</a></li>
+                <li class="recent_comment_body"><p>亲测有用，大佬真厉害!!!!</p>
+</li>
+                <li class="recent_comment_author">--狗会笑</li>
+                <li class="recent_comment_title"><a href="https://www.cnblogs.com/Lexington-CV2/articles/16703093.html">2. Re:记一次在Ubuntu18虚拟机上安装VCS等</a></li>
+                <li class="recent_comment_body"><p>亲测ubuntu20.04按照这个教程可以完整安装，感谢！</p>
+</li>
+                <li class="recent_comment_author">--阿晴斩尽牛杂</li>
+                <li class="recent_comment_title"><a href="https://www.cnblogs.com/Lexington-CV2/articles/15901118.html">3. Re:稀疏傅里叶变换原理说明（一）</a></li>
+                <li class="recent_comment_body"><p>大家别忘了 这个频谱的顺序中间是高频，实际频谱应该是fftshift一下</p>
+</li>
+                <li class="recent_comment_author">--CommKang</li>
+                <li class="recent_comment_title"><a href="https://www.cnblogs.com/Lexington-CV2/articles/16703093.html">4. Re:记一次在Ubuntu18虚拟机上安装VCS等</a></li>
+                <li class="recent_comment_body"><p>大佬太强了，非常感谢，按照这个步骤吧环境都安装好了</p>
+</li>
+                <li class="recent_comment_author">--dangdang爱章鱼</li>
+                <li class="recent_comment_title"><a href="https://www.cnblogs.com/Lexington-CV2/articles/16614045.html">5. Re:一个简单的UVM项目的学习记录（二）——搭建验证框架</a></li>
+                <li class="recent_comment_body"><p>写的太好了，爱了爱了</p>
+</li>
+                <li class="recent_comment_author">--dangdang爱章鱼</li>
+        </ul>
+    </div>
+</div></div>
+
+
+</div>
+                    <script>loadBlogSideColumn();</script>
+	
+</td><td id="main">
+	<div id="post_detail">
+    <div class="post">
+        <div class="postTitle">
+            <a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/Lexington-CV2/articles/16703093.html" title="发布于 2022-09-17 22:40">
+    <span role="heading" aria-level="2">记一次在Ubuntu18虚拟机上安装VCS等</span>
+    
+
+</a><button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button>
+
+        </div>
+	
+        <div class="postText">
+            <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<blockquote>
+<p>没想到Questa Sim被我用崩了，出了问题还找不到问题在哪。一气之下转战VCS。远离需要写代码的工作，会变得不幸。</p>
+</blockquote>
+<p>首先感谢<a href="https://blog.csdn.net/qq_41717683/article/details/122267191" title="这篇博文《VCS2018在Ubuntu20 18安装步骤》" target="_blank" rel="noopener nofollow">这篇博文《VCS2018在Ubuntu20 18安装步骤》</a>的博主，安装方法几乎都来自于此。使用到的软件主要为Ubuntu-18.04.6-desktop-amd64，</p>
+<h1 id="一下载相关安装包">一、下载相关安装包<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<p>Ubuntu的安装包来自于此：<a href="http://mirrors.ustc.edu.cn/ubuntu-releases/18.04.6/" target="_blank" rel="noopener nofollow">http://mirrors.ustc.edu.cn/ubuntu-releases/18.04.6/</a><br>
+VCS等的安装包和相关材料，可以通过如下的网盘链接获得：<a href="https://pan.baidu.com/s/18_7_cbYmi04h5vmbghqNQA?pwd=7ln3" target="_blank" rel="noopener nofollow">https://pan.baidu.com/s/18_7_cbYmi04h5vmbghqNQA?pwd=7ln3</a> 提取码：7ln3</p>
+<h1 id="二安装准备">二、安装准备<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<h2 id="21-虚拟机的安装">2.1 虚拟机的安装<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>这一步没啥好说的，在VMware Workstation上面安装好Ubuntu虚拟机并打开，进入终端。<br>
+值得一提的是，在安装时我选择的是<strong>最小安装</strong>。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917151003551-463217184.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<p>因此，后续需要手动安装一些软件包，这一点尤其需要注意。</p>
+<h2 id="22-创建共享文件夹">2.2 创建共享文件夹<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>首先安装VMware Tools，在终端中依次输入命令：</p>
+<pre class="highlighter-hljs" highlighted="true"><code class="highlighter-hljs hljs language-sql hljs-line-numbers"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1">sudo apt <span class="hljs-keyword">update</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2">sudo apt install <span class="hljs-keyword">open</span><span class="hljs-operator">-</span>vm<span class="hljs-operator">-</span>tools</td></tr></tbody></table></code></pre>
+<p>显示<strong>重新安装VMware Tools</strong>的灰色选项就说明安装成功。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917161723580-315030216.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<p>为了实现Windows和Ubuntu之间的数据交换，需要创建一个共享文件夹。创建共享文件夹的详细操作可以参考博文：<a href="https://blog.csdn.net/baidu_38300480/article/details/122390855?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2-122390855-blog-123507978.pc_relevant_multi_platform_featuressortv2dupreplace&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2-122390855-blog-123507978.pc_relevant_multi_platform_featuressortv2dupreplace&amp;utm_relevant_index=5" title="VMware教程(一)：设置 CentOS 7 共享文件夹" target="_blank" rel="noopener nofollow">VMware教程(一)：设置 CentOS 7 共享文件夹</a>。此处我创建的共享文件夹名字为<strong>Windows2Linux</strong>。</p>
+<h2 id="23-准备对应资源">2.3 准备对应资源<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>解压下好的vcs_verdi2018.zip压缩包，得到以下文件：<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917162403253-467924212.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+将其中的scl_v2018.06、synopsysinstaller_v5.0、vcs_vO-2018.09-SP2、verdi-2018.9移
+动到共享文件夹中。在共享文件夹中创建一个文件夹（这里以temp为例），并将上述文件夹全部放进去，以方便后续的移动操作。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917165917453-1784050459.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<p>回到Linux端。在自己喜欢的路径建立如下文件夹，并将共享文件夹中的内容复制过来。因为内容有点多，移动过程需要花费一定的时间，等待移动完成。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917165459897-1848717579.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<h1 id="三开始安装">三、开始安装<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<h2 id="31-启动安装器">3.1 启动安装器<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>进入<strong>temp</strong>文件夹中的安装器文件夹，执行<code>./SynopsysInstaller_v5.0.run</code>，会提示将启动器安装在哪。这里为了方便起见，直接安装到当前路径。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917170423020-1423902347.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+安装完成后，执行<code>./setup.sh</code>，弹出引导界面就算成功。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917170745138-1623571159.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+点击Start，出现如下界面。可以全默认，点击Next。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917174846721-186943550.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+之后出现如下界面。该界面用于选择安装源。值得一提的是，SCL、VCS和Verdi，每一个都有一个安装源，因此总计要安装三次。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917175041451-1282277201.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<h2 id="32-scl">3.2 SCL<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>SCL是Synopsys软件的License管理软件。为了使用VCS和Verdi，这个软件是必不可少的。</p>
+<p>选择SCL安装源所在的路径，以我为例，为 <em>/home/yuuouji/EDA/Synopsys/temp/scl_v2018.06</em> ，当然，这个选择过程是图形化的。选择好后点击Next。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917175600878-677086488.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+之后会选择安装路径。选择之前创建的对应文件夹即可。以我为例，该文件夹对应的路径为 <em>/home/yuuouji/EDA/Synopsys/scl</em>。选好后点击Next。<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917175750747-79550038.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+产品选择界面没啥好说的，也没其他的可选。选好后点击Next。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917175841075-285865622.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+配置界面看一眼就好，一般直接点击Next。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917175937298-1093073697.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+确认界面选择Accept,Install，之后就是等待安装完成。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917180025334-1224509669.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+安装完成后选择Finish，会弹出发行简介，直接点击Dismiss。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917180151271-1349067069.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917180235749-327149022.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+这样，SCL就安装好了。</p>
+<h2 id="33-vcs">3.3 VCS<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>与SCL的安装流程类似，再次启动<strong>setup.sh</strong>文件，依次选择Start，Next，来到安装源的选择界面。以我为例，选择的安装源路径为 <em>/home/yuuouji/EDA/Synopsys/temp/vcs_vO-2018.09-SP2</em> ，点击Next，安装路径为 <em>/home/yuuouji/EDA/Synopsys/vcs</em>。VCS的产品也只有一个可选，选择后点击Next。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917180821456-1636412265.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+之后依次点击Next和Accept,Install，等待安装完成。<br>
+安装到尾声的时候会弹出错误，这个错误无伤大雅，只是说明一个脚本没有被执行。这个脚本用来安装文档，没有也不影响使用。直接点击OK，然后Finish，最后是Dismiss。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917181943845-1911451139.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<h2 id="34-verdi">3.4 Verdi<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>Verdi的安装流程与VCS相同。再次启动<strong>setup.sh</strong>文件，依次选择Start，Next，来到安装源的选择界面。以我为例，选择的安装源路径为 <em>/home/yuuouji/EDA/Synopsys/temp/verdi-2018.9</em> ，点击Next，安装路径为 <em>/home/yuuouji/EDA/Synopsys/verdi</em>。Verdi的产品也只有一个可选，选择后点击Next。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917183502012-614204715.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+之后依次点击Next和Accept,Install，等待安装完成。完成后点击Finish和Dismiss。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917184511247-283790528.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<h1 id="四破解">四、破解<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<h2 id="41-生成license">4.1 生成license<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>由于一些原因，为了使用VCS等软件需要对其进行破解，这可以说是传统艺能了。</p>
+<p>在Windows侧，打开之前解压出来的、名为<strong>scl_keygen_2030</strong>的文件夹，运行其中名为<strong>scl_keygen.exe</strong>的可执行文件。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917184834269-1858848515.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+在操作界面，有三个地方需要修改，有一个地方需要注意。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917193257475-600420426.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<ul>
+<li>HOST ID Maemon和HOST ID Feature处需要填入自己的Ubuntu的物理地址</li>
+<li>HOST Name处需要填入自己的Ubuntu主机名</li>
+<li>EXPIRE处规定了生成的License文件的有效期限，这里是2030年12月12日到期，可以无需对其进行操作。</li>
+</ul>
+<p>回到Ubuntu的终端界面，依次输入以下命令：</p>
+<pre class="highlighter-hljs" highlighted="true"><code class="highlighter-hljs hljs language-dos hljs-line-numbers"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1">sudo apt install <span class="hljs-built_in">net</span>-tools</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2">ifconfig</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="3"><div class="hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="3">hostname</td></tr></tbody></table></code></pre>
+<p>图中红圈处的部分就是物理地址，将其中的冒号去掉，填入操作界面中；<code>hostname</code>的返回值就是主机名，将其也填入操作界面中。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917194132459-980975028.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+填好后点击Generate，就会在该可执行文件所在的文件夹下生成一个名为<strong>Synopsys.dat</strong>的文件，这就是我们的目标文件。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917194431348-1013749843.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917194608463-993997927.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+打开该文件，需要修改其中的第二行，及snpslmd所在的绝对路径。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917203745573-22131414.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+按照下图所示的相对路径，在SCL的安装目录中找到该路径，以我为例，该路径是 <em>/home/yuuouji/EDA/Synopsys/scl/scl/2018.06/linux64/bin</em> 。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917204006252-1846522167.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+将该路径加入<strong>Synopsys.dat</strong>，变成如下图所示的形式。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917204305987-1040429704.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<h2 id="42-修改环境变量">4.2 修改环境变量<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>为了让VCS等能识别到license，需要进行环境变量的设定。在Ubuntu终端分别输入以下指令：</p>
+<pre class="highlighter-hljs" highlighted="true"><code class="highlighter-hljs hljs language-bash hljs-line-numbers"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1">sudo apt-get install vim</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2">vim ~/.bashrc</td></tr></tbody></table></code></pre>
+<p>在该文件的末尾添加以下代码：</p>
+<pre class="highlighter-hljs" highlighted="true"><code class="highlighter-hljs hljs language-bash hljs-line-numbers"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-comment"># export export SYNOPSYS="/usr/software/synopsys"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2"><span class="hljs-built_in">export</span> VCS_TARGET_ARCH=<span class="hljs-string">"amd64"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="3"><div class="hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="3"><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/vcs/vcs/O-2018.09-SP2/gui/dve/bin:"</span><span class="hljs-variable">$PATH</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="4"><div class="hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="4"><span class="hljs-built_in">export</span> DVE_HOME=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/vcs/vcs/O-2018.09-SP2/gui/dve"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="5"><div class="hljs-ln-n" data-line-number="5"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="5"><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/vcs/vcs/O-2018.09-SP2/bin:"</span><span class="hljs-variable">$PATH</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="6"><div class="hljs-ln-n" data-line-number="6"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="6"><span class="hljs-built_in">export</span> VCS_HOME=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/vcs/vcs/O-2018.09-SP2"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="7"><div class="hljs-ln-n" data-line-number="7"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="7"><span class="hljs-comment"># export VCS_ARCH_OVERRIDE="linux"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="8"><div class="hljs-ln-n" data-line-number="8"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="8"><span class="hljs-comment"># verdi</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="9"><div class="hljs-ln-n" data-line-number="9"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="9"><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/verdi/verdi/Verdi_O-2018.09-SP2/bin:"</span><span class="hljs-variable">$PATH</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="10"><div class="hljs-ln-n" data-line-number="10"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="10"><span class="hljs-built_in">export</span> VERDI_HOME=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/verdi/verdi/Verdi_O-2018.09-SP2"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="11"><div class="hljs-ln-n" data-line-number="11"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="11"><span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/lib/LINUX64"</span>:<span class="hljs-variable">$LD_LIBRARY_PATH</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="12"><div class="hljs-ln-n" data-line-number="12"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="12"><span class="hljs-built_in">export</span> VERDI_DIR=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/verdi/verdi/Verdi_O-2018.09-SP2"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="13"><div class="hljs-ln-n" data-line-number="13"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="13"><span class="hljs-built_in">export</span> NOVAS_INST_DIR=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/verdi/verdi/Verdi_O-2018.09-SP2"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="14"><div class="hljs-ln-n" data-line-number="14"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="14"><span class="hljs-built_in">export</span> NPI_PLATFORM=<span class="hljs-string">"LINUX64_GNU_472"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="15"><div class="hljs-ln-n" data-line-number="15"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="15"><span class="hljs-built_in">export</span> LD_LIBRARY_PATH=<span class="hljs-string">"<span class="hljs-variable">$NOVAS_INST_DIR</span>/share/NPI/lib/LINUX64_GNU_520"</span>:<span class="hljs-variable">$LD_LIBRARY_PATH</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="16"><div class="hljs-ln-n" data-line-number="16"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="16"><span class="hljs-built_in">export</span> NOVAS_HOME=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/verdi/verdi/Verdi_O-2018.09-SP2"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="17"><div class="hljs-ln-n" data-line-number="17"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="17"><span class="hljs-comment"># LICENSE</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="18"><div class="hljs-ln-n" data-line-number="18"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="18"><span class="hljs-built_in">export</span> SNPSLMD_LICENSE_FILE=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/license/Synopsys.dat"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="19"><div class="hljs-ln-n" data-line-number="19"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="19"><span class="hljs-comment"># export SNPSLMD_LICENSE_FILE=27000@自己的hostname</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="20"><div class="hljs-ln-n" data-line-number="20"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="20"><span class="hljs-built_in">export</span> SNPSLMD_LICENSE_FILE=27000@myVM</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="21"><div class="hljs-ln-n" data-line-number="21"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="21"><span class="hljs-built_in">export</span> LM_LICENSE_FILE=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/license/Synopsys.dat"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="22"><div class="hljs-ln-n" data-line-number="22"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="22"><span class="hljs-built_in">alias</span> lmli=<span class="hljs-string">"/home/yuuouji/EDA/Synopsys/scl/scl/2018.06/linux64/bin/lmgrd -c /home/yuuouji/EDA/Synopsys/license/Synopsys.dat"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="23"><div class="hljs-ln-n" data-line-number="23"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="23"><span class="hljs-comment"># SCL</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="24"><div class="hljs-ln-n" data-line-number="24"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="24"><span class="hljs-built_in">export</span> PATH=/home/yuuouji/EDA/Synopsys/scl/scl/2018.06/linux64/bin:<span class="hljs-variable">$PATH</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="25"><div class="hljs-ln-n" data-line-number="25"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="25"><span class="hljs-built_in">alias</span> dve=<span class="hljs-string">"dve -full64 &amp;"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="26"><div class="hljs-ln-n" data-line-number="26"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="26"><span class="hljs-built_in">alias</span> vcs64=<span class="hljs-string">"vcs -full64"</span></td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="27"><div class="hljs-ln-n" data-line-number="27"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="27"><span class="hljs-built_in">alias</span> verdi=<span class="hljs-string">"verdi -full64 &amp;"</span></td></tr></tbody></table></code></pre>
+<p>由于代码很长，而且需要根据上面的相对路径一个个修改为自己目录下的绝对路径，因此这里的修改需要非常小心。</p>
+<p>修改完成后，在终端输入<code>source ~/.bashrc</code>生效上述环境变量。</p>
+<h2 id="43-验证license">4.3 验证license<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>将修改后的<strong>Synopsys.dat</strong>复制到共享文件夹<strong>Windows2Linux</strong>中，回到Ubuntu终端，将该文件移动到之前创建的<strong>License</strong>文件夹中。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917204544662-951002089.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+确认有该文件后，依次输入以下命令：</p>
+<pre class="highlighter-hljs" highlighted="true"><code class="highlighter-hljs hljs language-mipsasm hljs-line-numbers"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1">sudo apt <span class="hljs-keyword">install </span>dos2unix</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2">dos2unix Synopsys.dat</td></tr></tbody></table></code></pre>
+<p>之后按照下图中的相对路径，索引到SCL中，一个名为<strong>sssverify</strong>的可执行文件，该文件的作用是验证license文件是否合法。使用方式如图，即需要license所在的文件路径，以我为例，该路径为 <em>~/EDA/Synopsys/license/Synopsys.dat</em> 。</p>
+<p>启动验证后，只有出现了下图中红圈所示的<strong>PASSED!</strong>才能说明破解成功。如果破解不成功，仔细核对上述流程中的步骤，看是否出现了路径出错、代码中混入了其他符号等问题。如果验证了很多次仍然不行，考虑生成新的license并重新验证。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917212849749-1609737791.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<h2 id="44-启动license">4.4 启动license<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h2>
+<p>正如使用<strong>sssverify</strong>来验证license文件一样，SCL中有<strong>lmgrd</strong>用于启动license。</p>
+<p>在启动license之前，先在终端输入命令<code>apt-get install lsb-core</code>安装32位库。</p>
+<p>由于之前已经在<strong>bashrc</strong>中使用别名（alias）将<strong>lmgrd</strong>文件的使用过程封装成了命令，因此直接在终端输入命令<code>lmli</code>即可执行license。</p>
+<p>执行license后令其等待一段时间，发现其出现如图所示的错误提示，按照其提示在对应路径下创建文件夹。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917214433402-1179981938.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+创建好后再次输入命令<code>lmli</code>，发现又出现了问题。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917214547871-1435840930.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+该问题的原因在于端口被占用。使用以下命令：</p>
+<pre class="highlighter-hljs" highlighted="true"><code class="highlighter-hljs hljs language-perl hljs-line-numbers"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1">lmdown</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2">ps auf | <span class="hljs-keyword">grep</span> lmgrd</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="3"><div class="hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="3"><span class="hljs-keyword">kill</span> -<span class="hljs-number">9</span> <span class="hljs-number">15721</span></td></tr></tbody></table></code></pre>
+<p>放开端口。其中<code>kill</code>命令返回说没有该进程，这是十分正常的事情。放开端口后重新执行<code>lmli</code>，如果还出现占用问题，就<code>ps</code>和<code>kill</code>多试几次。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917215141395-1981639814.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+最终成功执行<code>lmli</code>后，出现以下数据就说明执行成功了。前后分别按下<code>ctrl</code>和<code>C</code>键，停止执行。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917215453512-342509552.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<h1 id="五软件验证">五、软件验证<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<p>终端输入<code>dve</code>，等待一段时间，出现界面，说明成功。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917215721306-1831007234.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+终端输入<code>verdi</code>，会发现其提示语法错误。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917221352267-1947766951.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+出现这个问题的原因在于从Ubuntu-6.10开始，默认使用dash（the Debian Almquist Shell）而不是bash（the GNUBourne-Again Shell），两者之间的区别会导致错误。</p>
+<p>执行命令<code>sudo dpkg-reconfigure dash</code>，在弹出的界面里面选择<strong>否</strong>，然后按下回车键。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917221655069-277613502.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+修改完后再次输入<code>verdi</code>，发现仍有错误，该错误的原因在于缺少一个关键库文件。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917221807455-173599644.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+这个缺少的库文件就在解压后得到的文件夹<strong>libpng12.so.0</strong>中。打开该文件夹，将文件<strong>libpng12.so.0</strong>复制到<strong>Windows2Linux</strong>文件夹中，再在Linux端使用命令将其移动到路径 <em>/usr/lib/x86_64-linux-gnu/</em> 当中。</p>
+<p><img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917222009018-1278977081.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917222256512-92299862.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+再次输入<code>verdi</code>，等待一段时间就能弹出界面。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917222411563-1699015279.png" alt="image" loading="lazy" class="medium-zoom-image"><br>
+终端输入<code>vcs -help</code>，出现如下界面说明成功。<br>
+<img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/1850196-20220917222610743-972698348.png" alt="image" loading="lazy" class="medium-zoom-image"></p>
+<h1 id="六开机自启动license">六、开机自启动license<button class="cnblogs-toc-button" title="显示目录导航" aria-expanded="false"></button></h1>
+<p>每次使用VCS之前，都需要启动license，这显然太不方便了。因此创建一个脚本使其开机自启动。</p>
+<p>依次输入以下命令：</p>
+<pre class="highlighter-hljs" highlighted="true"><code class="highlighter-hljs hljs language-bash hljs-line-numbers"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1"><span class="hljs-built_in">cd</span> /etc/profile.d/ </td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="2"><div class="hljs-ln-n" data-line-number="2"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="2">sudo <span class="hljs-built_in">touch</span> lmli.sh</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="3"><div class="hljs-ln-n" data-line-number="3"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="3">sudo <span class="hljs-built_in">chmod</span> 777 lmli.sh</td></tr><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="4"><div class="hljs-ln-n" data-line-number="4"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="4">vim lmli.sh</td></tr></tbody></table></code></pre>
+<p>在打开的<strong>lmli.sh</strong>文件中，输入以下内容，保存并退出。</p>
+<pre class="highlighter-hljs" highlighted="true"><code class="highlighter-hljs hljs language-bash hljs-line-numbers"><table class="hljs-ln"><tbody><tr><td class="hljs-ln-line hljs-ln-numbers" data-line-number="1"><div class="hljs-ln-n" data-line-number="1"></div></td><td class="hljs-ln-line hljs-ln-code" data-line-number="1">/home/yuuouji/EDA/Synopsys/scl/scl/2018.06/linux64/bin/lmgrd -c /home/yuuouji/EDA/Synopsys/license/Synopsys.dat -l /home/yuuouji/EDA/Synopsys/scl/scl/2018.06/linux64/bin/lmgrd.log</td></tr></tbody></table></code></pre>
+<p>重启Ubuntu，打开终端后直接输入<code>verdi</code>，等待一段时间后弹出界面，大功告成！</p>
+
+</div>
+<div id="MySignature" role="contentinfo">
+    <p>本文来自博客园，作者：<a href="https://www.cnblogs.com/Lexington-CV2/" target="_blank">TooyamaYuuouji</a>，转载请注明原文链接：<a href="https://www.cnblogs.com/Lexington-CV2/articles/16703093.html" target="_blank">https://www.cnblogs.com/Lexington-CV2/articles/16703093.html</a></p>
+</div>
+<div class="clear"></div>
+<div id="blog_post_info_block" role="contentinfo">
+
+
+<div id="BlogPostCategory">
+    分类: 
+            <a href="https://www.cnblogs.com/Lexington-CV2/category/2196837.html" target="_blank">软件安装</a>
+</div>
+<div id="EntryTag">
+    标签: 
+            <a href="https://www.cnblogs.com/Lexington-CV2/tag/Linux/">Linux</a>
+,             <a href="https://www.cnblogs.com/Lexington-CV2/tag/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a>
+</div>
+    <div id="blog_post_info">
+<div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(16703093,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+        <a id="green_channel_follow" onclick="follow('dcf364fd-cb02-43d3-9bc3-08d753a9a8fd');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_wechat" href="javascript:void(0);" onclick="shareManager.wechatShare()">微信分享</a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/Lexington-CV2/" target="_blank"><img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/20211107194220.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/Lexington-CV2/">TooyamaYuuouji</a>
+            <br>
+            <a href="https://home.cnblogs.com/u/Lexington-CV2/followers/">粉丝 - <span class="follower-count">13</span></a>
+            <a href="https://home.cnblogs.com/u/Lexington-CV2/followees/">关注 - <span class="following-count">0</span></a><br>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow" class="follow-tip">
+                <a href="javascript:void(0);" onclick="follow('dcf364fd-cb02-43d3-9bc3-08d753a9a8fd');return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(16703093,'Digg')">
+        <span class="diggnum" id="digg_count">2</span>
+    </div>
+    <div class="buryit" onclick="votePost(16703093,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+        <div id="vip_tip"><a class="tip" href="https://cnblogs.vip/" target="_blank">升级成为会员</a></div>
+</div>
+
+<script type="text/javascript">
+    currentDiggType = 0;
+</script>
+</div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+        </div>
+	
+        <div class="postfoot">
+            posted on 
+<span id="post-date" data-last-update-days="776.4939232850394" data-date-created="BlogServer.Application.Dto.BlogPost.BlogPostDto" data-date-updated="2023-02-13 20:56" aria-expanded="false">2022-09-17 22:40</span>&nbsp;
+<a href="https://www.cnblogs.com/Lexington-CV2">TooyamaYuuouji</a>&nbsp;
+阅读(<span id="post_view_count">5137</span>)&nbsp;
+评论(<span id="post_comment_count">4</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditArticles.aspx?postid=16703093" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(16703093);return false;">收藏</a>&nbsp;
+<a href="javascript:void(0)" onclick="reportManager.report({ currentUserId: '', targetType: 'blogPost', targetId: '16703093', targetLink: 'https://www.cnblogs.com/Lexington-CV2/articles/16703093.html', title: '记一次在Ubuntu18虚拟机上安装VCS等' })">举报</a>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    var cb_entryId = 16703093, cb_entryCreatedDate = '2022-09-17 22:40', cb_postType = 2, cb_postTitle = '记一次在Ubuntu18虚拟机上安装VCS等';
+    var allowComments = true, cb_blogId = 716723, cb_blogApp = 'Lexington-CV2', cb_blogUserGuid = 'dcf364fd-cb02-43d3-9bc3-08d753a9a8fd';
+    mermaidRender.render()
+    markdown_highlight()
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");    
+</script>
+<a id="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"> 
+        <div class="comment-nav-right">
+            <span id="span_refresh_tips"></span><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a>
+        </div>
+    </div>
+    <div id="comment_form_container"><div class="login_tips">
+    登录后才能查看或发表评论，立即 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return account.login('!comments');">登录</a> 或者
+    <a href="https://www.cnblogs.com/">逛逛</a> 博客园首页
+</div>
+</div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+        <div id="cnblogs_ch"><a href="http://www.uccpsoft.com/index.htm" target="_blank" onclick="gtag('event', 'click', {'event_category': 'ad', 'event_label': 'T2-UCanCode'})">【推荐】100%开源！大型工业跨平台软件C++源码提供，建模，组态！</a><br><a href="https://dataease.cn/?utm_source=cnblogs" target="_blank" onclick="gtag('event', 'click', {'event_category': 'ad', 'event_label': 'T2-飞致云-DataEase'})">【推荐】还在用 ECharts 开发大屏？试试这款永久免费的开源 BI 工具！</a><br><a href="https://www.trae.com.cn/?utm_source=juejin&amp;utm_medium=juejin_trae&amp;utm_campaign=bokeyuan" target="_blank" onclick="gtag('event', 'click', {'event_category': 'ad', 'event_label': 'T2-Trae'})">【推荐】国内首个AI IDE，深度理解中文开发场景，立即下载体验Trae</a><br><a href="https://www.marscode.cn/?utm_source=advertising&amp;utm_medium=cnblogs.com_ug_cpa&amp;utm_term=hw_marscode_cnblogs&amp;utm_content=home" target="_blank" onclick="gtag('event', 'click', {'event_category': 'ad', 'event_label': 'T2-字节-MarsCode'})">【推荐】编程新体验，更懂你的AI，立即体验豆包MarsCode编程助手</a><br><a href="http://ishell.cc/" target="_blank" onclick="gtag('event', 'click', {'event_category': 'ad', 'event_label': 'T2-IShell'})">【推荐】轻量又高性能的 SSH 工具 IShell：AI 加持，快人一步</a><br></div>
+    <div id="opt_under_post"></div>
+        <div id="blog_c1" class="under-post-card">
+            <a href="https://www.trae.com.cn/?utm_source=advertising&amp;utm_medium=cnblogs_ug_cpa&amp;utm_term=hw_trae_cnblogs" rel="nofollow" target="_blank" onclick="countCreativeClicks('C1-字节-trae')">
+                <img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/35695-20250314212005023-452697622.png" onload="countCreativeImpressions('C1-字节-trae')" alt="">
+                <span id="c1_impression" style="display:none"></span>
+            </a>
+        </div>
+    <div id="under_post_card1"><div class="under-post-card">
+<b>编辑推荐：</b>
+<br>
+
+· <a href="https://www.cnblogs.com/w4ngzhen/p/18801243" target="_blank">理解Rust引用及其生命周期标识（下）</a>
+    <br>
+· <a href="https://www.cnblogs.com/ging/p/18796255" target="_blank">从二进制到误差：逐行拆解C语言浮点运算中的4008175468544之谜</a>
+    <br>
+· <a href="https://www.cnblogs.com/GreenShade/p/18771608" target="_blank">.NET制作智能桌面机器人：结合BotSharp智能体框架开发语音交互</a>
+    <br>
+· <a href="https://www.cnblogs.com/jiujuan/p/18794416" target="_blank">软件产品开发中常见的10个问题及处理方法</a>
+    <br>
+· <a href="https://www.cnblogs.com/code-daily/p/18784938" target="_blank">.NET 原生驾驭 AI 新基建实战系列：向量数据库的应用与畅想</a>
+    <br>
+</div></div>
+    <div id="under_post_card2"><div class="itnews under-post-card">
+    <b>阅读排行：</b>
+    <br>
+ ·          <a href="https://www.cnblogs.com/youring2/p/18799312" target="_blank">Ollama本地部署大模型总结</a>
+        <br>
+ ·          <a href="https://www.cnblogs.com/edisonchou/p/-/chengdu-dotnet-developers-connect-2025" target="_blank">2025成都.NET开发者Connect圆满结束</a>
+        <br>
+ ·          <a href="https://www.cnblogs.com/kuangdaoyizhimei/p/18799446" target="_blank">langchain0.3教程：从0到1打造一个智能聊天机器人</a>
+        <br>
+ ·          <a href="https://www.cnblogs.com/xingchenheyue/p/18799024" target="_blank">用一种新的分类方法梳理设计模式的脉络</a>
+        <br>
+ ·          <a href="https://www.cnblogs.com/xiaokang-coding/p/18799190" target="_blank">C 语言内存布局深度剖析：从栈到堆，你真的了解吗？</a>
+        <br>
+</div></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+        var commentManager = new blogCommentManager();
+        commentManager.renderComments(0);
+        fixPostBody();
+        window.footnoteTipManager.generateFootnoteTips();
+
+            window.tocManager.displayDisableTocTips = false;
+            window.tocManager.generateToc();
+            
+                setTimeout(function() { countViews(cb_blogId, cb_entryId); }, 50);
+            
+            deliverT2();
+            deliverC1C2();
+            loadNewsAndKb();
+            
+                LoadPostCategoriesTags(cb_blogId, cb_entryId);
+            
+            LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+            GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+            loadOptUnderPost();
+            GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+                </script>
+</div>
+
+
+
+</td></tr>
+</tbody></table>
+<p id="footer">
+	Copyright @
+	2025 TooyamaYuuouji
+<br><span id="poweredby">Powered by .NET 9.0 on Kubernetes</span>
+<br>
+	Powered by:
+	<a href="http://scottwater.com/blog" target="_blank">.Text</a> and 
+	<a href="http://asp.net/" target="_blank">ASP.NET</a>
+	<br>
+	Theme by: <a href="http://www.dotnetmonster.com/" target="_blank">.NET Monster</a>
+</p>
+
+
+
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8KL9kPW-LSFBi_9YdTzcC09mryKg4NzwphMZNBnEet5vfj5QCt4xfIlgOiC3EFn7zEjRO7BuEEywStzjM2F4bLfbbxlPdJ1lUB3iSDqSsMRRnv04Tn8vwyLW2SPP96ySDVYDQ7o37mEvGgVg5PSiq5I">
+    <script async="" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/js"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-M95P3TTWJZ');
+</script>
+<script defer="defer" src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/hm.js"></script>
+
+
+<div style="z-index: 998; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: none; flex-direction: column; align-items: center; justify-content: center">
+<div style="background: #fff;padding: 30px; margin: 30px; border-radius: 16px;">
+  <div style="width: 200px; height: 200px; background: rgba(255, 255, 255, 0.8); position: absolute; top: -100px; right: -100px; border-radius: 100px"></div>
+  <div style="text-align: center; font-size: 18px; margin-bottom: 10px;">点击右上角即可分享</div>
+  <img src="Ubuntu18%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85VCS_files/35695-20230906145857937-1471873834.gif" alt="微信分享提示">
+</div>   
+    </div><deepl-input-controller></deepl-input-controller></body></html>
